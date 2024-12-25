@@ -1,0 +1,6 @@
+model_path: /data3/liuxb/models/NQ_reranker_model
+
+data_path: /data3/liuxb/datasets/NQ/NQ_test_results.json
+output_path: /data3/liuxb/datasets/NQ/NQ_test_rerank_results.json
+
+topK: 1
