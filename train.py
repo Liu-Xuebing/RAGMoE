@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 from tqdm import tqdm, trange
 from data.base import make_Training_loader, make_Validation_loader
 from utils import cal_anchor_embedding, cross_entropy, cal_EM_F1, find_subsequence_index
