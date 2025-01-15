@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 from tqdm import tqdm, trange
 from data.base import make_Training_loader, make_Validation_loader
 from utils import cal_anchor_embedding, cross_entropy, cal_EM_F1, find_subsequence_index
@@ -63,13 +63,13 @@ def valid(model, tok, valid_loader, layer):
             base_EM, base_F1 = EM_F1_of_model_generation(base_input_id, base_input, model, tok, answers)
             hook.remove()
 
-            # hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(direct_input_id.size(1)-base_input_id.size(1), model, tok))
-            hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(0, model, tok))
+            hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(direct_input_id.size(1)-base_input_id.size(1), model, tok))
+            # hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(0, model, tok))
             dir_EM, dir_F1 = EM_F1_of_model_generation(direct_input_id, direct_input, model, tok, answers)
             hook.remove()
 
-            # hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(prompt_input_id.size(1)-base_input_id.size(1), model, tok))
-            hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(0, model, tok))
+            hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(prompt_input_id.size(1)-base_input_id.size(1), model, tok))
+            # hook = model.model.layers[layer].mlp.register_forward_pre_hook(create_pre_hook_fn(0, model, tok))
             pro_EM, pro_F1 = EM_F1_of_model_generation(prompt_input_id, prompt_input, model, tok, answers)
             hook.remove()
 
@@ -91,11 +91,9 @@ def main(config):
     # with open('/data3/liuxb/code/MEMOE/Mechanistic_Interpretation/mlp.json') as file:
     #     layers = json.load(file)
 
-    for i in trange(1500):
+    for i in trange(1000, 1500):
         original_layer = model.model.layers[config.single_layer].mlp
         replace_layer(model, config.single_layer, original_layer, config.num_experts)
-        print(model)
-        exit()
         optimizer = AdamW(model.parameters(), lr=1e-4)
         scheduler = CosineAnnealingLR(optimizer, T_max=config.epochs, eta_min=1e-6)  # eta_min 是最小学习率
         train_loader = make_Training_loader(config, tok, i)
