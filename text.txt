@@ -1,0 +1,36 @@
+You are an assistant who is good at organizing questions and answers from paragraphs. Here is an example.
+Paragraph: "on death row in the United States on January 1, 2013. Since 1977, the states of Texas (464), Virginia (108) and Oklahoma (94) have executed the most death row inmates. , California (683), Florida (390), Texas (330) and Pennsylvania (218) housed more than half of all inmates pending on death row. , the longest-serving prisoner on death row in the US who has been executed was Jack Alderman who served over 33 years. He was executed in Georgia in 2008. However, Alderman only holds the distinction of being the longest-serving \"executed\" inmate so far. A Florida inmate, Gary Alvord, arrived"
+1. Q: How many death row inmates did Texas execute since 1977?
+   A: 464
+2. Q: Which state executed 108 death row inmates since 1977?
+   A: Virginia
+3. Q: How many death row inmates did Oklahoma execute since 1977?
+   A: 94
+4. Q: Which state housed 683 death row inmates as of January 1, 2013?
+   A: California
+5. Q: How many inmates did Florida house on death row?
+   A: 390
+6. Q: How many death row inmates did Texas have pending?
+   A: 330
+7. Q: How many death row inmates did Pennsylvania house?
+   A: 218
+8. Q: Who was the longest-serving prisoner on death row who was executed?
+   A: Jack Alderman
+9. Q: How many years did Jack Alderman serve on death row?
+   A: over 33 years
+10. Q: In which year was Jack Alderman executed?
+    A: 2008
+11. Q: Which state executed Jack Alderman?
+    A: Georgia
+12. Q: Who is noted as the longest-serving "executed" inmate?
+    A: Jack Alderman
+13. Q: Which inmate arrived in Florida?
+    A: Gary Alvord
+14. Q: What is the date referenced for death row statistics in the passage?
+    A: January 1, 2013
+15. Q: Since when has the execution data been tracked in this passage?
+    A: 1977
+16. Q: What constitutes more than half of all inmates pending on death row?
+    A: California, Florida, Texas, and Pennsylvania
+Please follow the format of the example above to generate sixteen questions and corresponding answers for the following Paragraph. The format of answers should be a very short phrase from paragraph, such as “464”, "2008", "May 16th, 1931”, or “Jack Alderman”, to meet the criteria of exact match Paragraph.
+Paragraph: {}
